@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>⚡ TELEGRAM REPORT</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #120000, #2b0000, #000000);
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .stars {
+      position: absolute;
+      inset: 0;
+      background: url('https://raw.githubusercontent.com/JulianLaval/canvas-particle-network/master/demo/media/starfield.png') repeat;
+      opacity: 0.05;
+      z-index: 1;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 380px;
+      padding: 34px 26px;
+      text-align: center;
+
+      background: rgba(255, 0, 0, 0.15);
+      border: 1.8px solid rgba(255, 40, 40, 0.85);
+      border-radius: 20px;
+
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+
+      box-shadow: 0 0 12px rgba(255, 40, 40, 0.6);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #ff1a1a, #ff4d4d, #ff0000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #ff1a1a, #ff4d4d, #ff0000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      opacity: 0.85;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+
+      border-radius: 10px;
+      border: 1px solid rgba(255, 60, 60, 0.45);
+      background: rgba(255, 0, 0, 0.12);
+      color: #fff;
+
+      font-size: 14px;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    input::placeholder {
+      color: rgba(255, 60, 60, 0.85);
+    }
+
+    input:focus {
+      background: rgba(255, 0, 0, 0.18);
+      border-color: rgba(255, 60, 60, 0.9);
+      box-shadow:
+        0 0 6px rgba(255, 0, 0, 0.6),
+        0 0 14px rgba(255, 0, 0, 0.85);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+
+      background: rgba(255, 40, 40, 0.9);
+      color: #fff;
+
+      border: 1px solid rgba(255, 60, 60, 0.8);
+      border-radius: 10px;
+
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 40, 40, 0.85);
+
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(255, 60, 60, 1);
+    }
+
+    .buy-access {
+      margin-top: 16px;
+      display: inline-block;
+      padding: 10px 18px;
+
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      color: #fff;
+
+      background: rgba(255, 0, 0, 0.08);
+      border: 1px solid rgba(255, 60, 60, 0.6);
+      border-radius: 8px;
+
+      box-shadow: 0 0 10px rgba(255, 40, 40, 0.6);
+    }
+
+    .buy-access:hover {
+      background: rgba(255, 40, 40, 0.15);
+    }
+
+    .footer {
+      margin-top: 28px;
+      font-size: 10px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="card">
+  <div class="icon">⚡</div>
+  <div class="title">TELEGRAM REPORT</div>
+  <div class="subtitle">Login to access your powerful tools</div>
+
+  <form onsubmit="login(event)">
+    <input type="ways" placeholder="Username" required>
+    <input type="ways" placeholder="Key Akses" required>
+    <button type="submit">Masuk</button>
+  </form>
+
+  <a class="buy-access" href="https://t.me/XwyWays" target="_blank">💎 Beli Akses</a>
+
+  <div class="footer">© 2025 Telegram Report Network</div>
+</div>
+
+<script>
+  function login(e) {
+    e.preventDefault();
+    // sementara langsung masuk dashboard
+    window.location.href = "dashboard.html";
+  }
+</script>
+
+</body>
+</html>
