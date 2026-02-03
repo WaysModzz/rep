@@ -22,6 +22,7 @@ body {
   overflow-x: hidden;
 }
 
+
 /* ===== HEADER ===== */
 .header {
   padding: 24px 40px;
@@ -175,6 +176,12 @@ body {
 </head>
 
 <body>
+
+  <script>
+if (!localStorage.getItem("loggedIn")) {
+  window.location.href = "index.html";
+}
+</script>
 
 <!-- HEADER -->
 <div class="header">
