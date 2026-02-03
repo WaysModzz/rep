@@ -8,14 +8,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800;900&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     body {
-      background: linear-gradient(to bottom right, #120000, #2b0000, #000000);
+      background: linear-gradient(to bottom right, #120000, #2b0000, #000);
       font-family: 'Poppins', sans-serif;
       min-height: 100vh;
       display: flex;
@@ -23,7 +19,6 @@
       align-items: center;
       color: #fff;
       overflow: hidden;
-      position: relative;
     }
 
     .stars {
@@ -31,47 +26,33 @@
       inset: 0;
       background: url('https://raw.githubusercontent.com/JulianLaval/canvas-particle-network/master/demo/media/starfield.png') repeat;
       opacity: 0.05;
-      z-index: 1;
     }
 
     .card {
       position: relative;
-      z-index: 2;
       width: 100%;
       max-width: 380px;
       padding: 34px 26px;
       text-align: center;
-
       background: rgba(255, 0, 0, 0.15);
       border: 1.8px solid rgba(255, 40, 40, 0.85);
       border-radius: 20px;
-
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-
       box-shadow: 0 0 12px rgba(255, 40, 40, 0.6);
       animation: fadeIn 1s ease;
+      z-index: 2;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .icon {
-      font-size: 30px;
-      margin-bottom: 8px;
-      background: linear-gradient(90deg, #ff1a1a, #ff4d4d, #ff0000);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
+      from { opacity:0; transform:translateY(20px); }
+      to { opacity:1; transform:translateY(0); }
     }
 
     .title {
       font-size: 26px;
       font-weight: 900;
       margin-bottom: 8px;
-      background: linear-gradient(90deg, #ff1a1a, #ff4d4d, #ff0000);
+      background: linear-gradient(90deg, #ff1a1a, #ff4d4d);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -86,27 +67,16 @@
       width: 100%;
       padding: 14px;
       margin-bottom: 15px;
-
       border-radius: 10px;
       border: 1px solid rgba(255, 60, 60, 0.45);
       background: rgba(255, 0, 0, 0.12);
       color: #fff;
-
       font-size: 14px;
       outline: none;
-      transition: 0.3s ease;
     }
 
     input::placeholder {
       color: rgba(255, 60, 60, 0.85);
-    }
-
-    input:focus {
-      background: rgba(255, 0, 0, 0.18);
-      border-color: rgba(255, 60, 60, 0.9);
-      box-shadow:
-        0 0 6px rgba(255, 0, 0, 0.6),
-        0 0 14px rgba(255, 0, 0, 0.85);
     }
 
     button {
@@ -114,43 +84,12 @@
       padding: 14px;
       font-size: 15px;
       font-weight: 600;
-
       background: rgba(255, 40, 40, 0.9);
       color: #fff;
-
       border: 1px solid rgba(255, 60, 60, 0.8);
       border-radius: 10px;
-
       cursor: pointer;
       box-shadow: 0 0 12px rgba(255, 40, 40, 0.85);
-
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(255, 60, 60, 1);
-    }
-
-    .buy-access {
-      margin-top: 16px;
-      display: inline-block;
-      padding: 10px 18px;
-
-      font-size: 13px;
-      font-weight: 500;
-      text-decoration: none;
-      color: #fff;
-
-      background: rgba(255, 0, 0, 0.08);
-      border: 1px solid rgba(255, 60, 60, 0.6);
-      border-radius: 8px;
-
-      box-shadow: 0 0 10px rgba(255, 40, 40, 0.6);
-    }
-
-    .buy-access:hover {
-      background: rgba(255, 40, 40, 0.15);
     }
 
     .footer {
@@ -162,38 +101,40 @@
 </head>
 
 <body>
-
 <div class="stars"></div>
 
 <div class="card">
-  <div class="icon">⚡</div>
   <div class="title">TELEGRAM REPORT</div>
   <div class="subtitle">Login to access your powerful tools</div>
 
-<form id="loginForm">
-  <input type="text" id="ways" placeholder="Username" required>
-  <input type="password" id="ways" placeholder="Key Akses" required>
-  <button type="submit">Masuk</button>
-</form>
+  <form id="loginForm">
+    <input type="text" id="ways" placeholder="Username" required>
+    <button type="submit">Masuk</button>
+  </form>
+
+  <div class="footer">© Telegram Report Panel</div>
+</div>
 
 <script>
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
+document.getElementById("loginForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const key = document.getElementById("apikey").value;
+  const username = document.getElementById("username").value.trim();
 
-  const res = await fetch("/cek?key=" + encodeURIComponent(key));
-  const data = await res.json();
-
-  if (data.status === "ok") {
-    localStorage.setItem("loggedIn", "true");
-    window.location.href = "dashboard.html";
-  } else {
-    alert("Key akses salah!");
+  if (!username) {
+    alert("Username wajib diisi");
+    return;
   }
+
+  // simpan session
+  localStorage.setItem("session", JSON.stringify({
+    username: username,
+    loginAt: Date.now()
+  }));
+
+  // redirect dashboard
+  window.location.href = "dashboard.html";
 });
-</script>
-  }
 </script>
 
 </body>
