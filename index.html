@@ -170,20 +170,29 @@
   <div class="title">TELEGRAM REPORT</div>
   <div class="subtitle">Login to access your powerful tools</div>
 
-  <form onsubmit="login(event)">
-    <input type="ways" placeholder="Username" required>
-    <input type="ways" placeholder="Key Akses" required>
-    <button type="submit">Masuk</button>
-  </form>
-
-  <a class="buy-access" href="https://t.me/XwyWays" target="_blank">💎 Beli Akses</a>
-
-  <div class="footer">© 2025 Telegram Report Network</div>
-</div>
+<form id="loginForm">
+  <input type="text" id="username" placeholder="Username" required>
+  <input type="password" id="apikey" placeholder="Key Akses" required>
+  <button type="submit">Masuk</button>
+</form>
 
 <script>
-  function login(e) {
-    e.preventDefault();
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const key = document.getElementById("apikey").value;
+
+  const res = await fetch("/cek?key=" + encodeURIComponent(key));
+  const data = await res.json();
+
+  if (data.status === "ok") {
+    localStorage.setItem("loggedIn", "true");
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Key akses salah!");
+  }
+});
+</script>
     // sementara langsung masuk dashboard
     window.location.href = "dashboard.html";
   }
